@@ -12,6 +12,7 @@ typedef struct keyStroketag
     char key; // char or int
     bool text;
     bool shift;
+    std::vector<INPUT> ip;
     INPUT *inps;
 } KEYSTROKE;
 

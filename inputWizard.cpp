@@ -7,14 +7,22 @@
  */
 int InputWizard::exec()
 {
-    KEYSTROKE *temp = NULL;
+    unsigned long t = time(0x0);
+    KEYSTROKE temp;
+    int x = 0;
     while (1)
     {
+
         Sleep(rate);
-        if (chance < (rand() % 1000))
+
+        if (chance < (rand() % 1000) || 1 == 1)
         {
-            temp = &inputs.at(rand() % inputs.size());
-            SendInput(temp->size, temp->inps, sizeof(INPUT));
+            x = rand() % inputs.size();
+
+            temp = inputs.at(x);
+            std::cout << x << std::endl;
+            std::cout << temp.key << std::endl;
+            SendInput(temp.size, &temp.inps[0], sizeof(INPUT));
         }
     }
 

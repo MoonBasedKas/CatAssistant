@@ -5,7 +5,7 @@
 int main()
 {
     FileRead fr("sample.csv");
-    std::cout << "hi" << std::endl;
+
     InputWizard iw(fr.Inputs, 100, 1000);
     iw.exec();
     return 0;
