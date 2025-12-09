@@ -8,7 +8,7 @@
 int InputWizard::exec()
 {
     unsigned long t = time(0x0);
-    KEYSTROKE temp;
+    KEYSTROKE *temp;
     int x = 0;
     while (1)
     {
@@ -17,12 +17,13 @@ int InputWizard::exec()
 
         if (chance < (rand() % 1000) || 1 == 1)
         {
-            x = rand() % inputs.size();
+            x = rand() % inputs->size();
 
-            temp = inputs.at(x);
+            temp = &inputs->at(x);
             std::cout << x << std::endl;
-            std::cout << temp.key << std::endl;
-            SendInput(temp.size, &temp.inps[0], sizeof(INPUT));
+            std::cout << temp->key << std::endl;
+            std::cout << temp->inps << std::endl;
+            std::cout << SendInput(temp->size, temp->inps, sizeof(INPUT)) << std::endl;
         }
     }
 
@@ -43,7 +44,7 @@ int InputWizard::insertInput()
 InputWizard::InputWizard(std::vector<KEYSTROKE> k, int per, int r)
 {
     srand(time(0x0));
-    inputs = k;
+    inputs = &k;
     chance = per;
     rate = r;
 }

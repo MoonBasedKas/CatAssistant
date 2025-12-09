@@ -51,18 +51,19 @@ void FileRead::generateInputs()
     int slide = 0;
     for (int i = 0; i < Inputs.size(); i++)
     {
+        Inputs.at(i).ip = new std::vector<INPUT>;
         temp = (INPUT *)malloc(sizeof(INPUT));
         memset(temp, 0x0, sizeof(INPUT));
         temp->type = INPUT_KEYBOARD;
         temp->ki.wVk = VkKeyScan(Inputs.at(i).key);
-        Inputs.at(i).ip.push_back(*temp);
+        Inputs.at(i).ip->push_back(*temp);
 
         temp = (INPUT *)malloc(sizeof(INPUT));
         memset(temp, 0x0, sizeof(INPUT));
         temp->type = INPUT_KEYBOARD;
         temp->ki.wVk = VkKeyScan(Inputs.at(i).key);
         temp->ki.dwFlags = KEYEVENTF_KEYUP;
-        Inputs.at(i).ip.push_back(*temp);
+        Inputs.at(i).ip->push_back(*temp);
 
         Inputs.at(i).size = 2;
         // slide = 1;

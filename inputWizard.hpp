@@ -8,7 +8,7 @@
 class InputWizard
 {
 private:
-    std::vector<KEYSTROKE> inputs;
+    std::vector<KEYSTROKE> *inputs;
     int rate;   // how often in ms a event will trigger.
     int chance; // x/1000 chance a keystroke event will trigger.
 
